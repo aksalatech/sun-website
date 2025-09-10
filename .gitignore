@@ -1,0 +1,8 @@
+node_modules
+.idx
+vendor
+.env
+
+**/caddy
+frankenphp
+frankenphp-worker.php
