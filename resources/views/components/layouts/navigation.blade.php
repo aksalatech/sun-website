@@ -21,11 +21,12 @@
     <div class="fluid-container">
       <div class="navigation-row row align-items-center justify-content-center">
         <div class="col-lg-2">
-          <div class="logo light-logo">
-            <img src="{{ asset('storage/logo/logo-biru.png') }}" alt="" />
-          </div>
-          <div class="logo dark-logo">
+          <div class="logo">
             <img src="{{ asset('storage/logo/logo.png') }}" alt="" />
+            <h1 class="logo-text">
+                Supplying Frozen Goodness <br/>
+                for Every Table
+            </h1>
           </div>
         </div>
 
@@ -58,14 +59,11 @@
 
       <div id="responsive-navigation" class="dl-menuwrapper">
         <a href="{{ url('/') }}">
-          <div class="logo light-logo">
-            <img src="{{ asset('storage/logo/logo-biru.png') }}" alt="" />
-          </div>
-          <div class="logo dark-logo">
+          <div class="logo">
             <img src="{{ asset('storage/logo/logo.png') }}" alt="" />
           </div>
         </a>
-       
+
         <button class="dl-trigger">
           <span class="close-icon">
             <span></span>

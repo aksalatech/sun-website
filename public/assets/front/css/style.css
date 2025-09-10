@@ -18,6 +18,27 @@
   src: url("../fonts/Mayonice.ttf")
 }
 
+/* SUN Start */
+.logo {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-width: 350px;
+    gap: 10px;
+}
+.logo img {
+    width: 50px;
+    height: auto;
+}
+.logo .logo-text {
+  font-size: 16px;
+  font-weight: 500;
+  font-style: italic;
+  margin: 10px 0 !important;
+}
+/* SUN End */
 .text,
 footer,
 section,
@@ -140,14 +161,6 @@ body.modren-layout .simple-box-2 {
 }
 .top-nav .social-list li i {
   margin: 0;
-}
-.nav-right,
-.logo {
-  margin: 0;
-  float: left;
-  width: auto;
-  line-height: 0;
-  padding: 15px 0;
 }
 .nav-right a,
 .nav-right {
@@ -476,9 +489,6 @@ a.join-meeting {
   padding: 10px 0;
   margin-left: 70px;
   position: relative;
-}
-.logo img {
-  max-height: 35px;
 }
 .navigation-outer {
   background: transparent;
@@ -3514,13 +3524,6 @@ blockquote *:last-child {
     -webkit-backdrop-filter: blur(5px);
     z-index: 99;
 }
-.light-logo {
-  display: block;
-}
-
-.dark-logo {
-  display: none;
-}
 
 .header-dark {
   background-color: #132B59CC;
@@ -3528,14 +3531,6 @@ blockquote *:last-child {
 
 .header-dark.solid{
   background-color: #132B59;
-}
-
-.header-dark .light-logo {
-  display: none;
-}
-
-.header-dark .dark-logo {
-  display: block ;
 }
 
 .header-dark .navigation li a {
@@ -5163,13 +5158,6 @@ object-fit: cover;
         margin: 0 auto;
   }
 
-  .header-dark .light-logo {
-    display: none;
-  }
-
-  .header-dark .dark-logo {
-    display: block;
-  }
 
   .header-dark .dl-trigger .close-icon span {
     background: #fff;
