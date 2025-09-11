@@ -20,6 +20,33 @@
     </div>
 
 
+<!-- QUALITY CHECKS SECTION -->
+@php
+    $qualityItemsModel = \App\Models\QualityCheck::query()
+        ->where('is_active', true)
+        ->orderBy('order')
+        ->get();
+@endphp
+<section class="quality-section" style="background: #F2BF13; padding:30px 0;">
+    <div class="container" style="max-width: 1350px;">
+        <div class="row">
+            @if($qualityItemsModel->count())
+                @foreach($qualityItemsModel as $item)
+                    <div class="quality-item col-md-3">
+                        <div class="d-flex align-items-start gap-4">
+                            @if(!empty($item->icon))
+                                <img src="{{ asset('storage/'.$item->icon) }}" alt="icon" style="width:60px; height:60px; object-fit:contain;">
+                            @endif
+                            <div style="font-weight:600; color:#1F2E11;">{!! $item->text !!}</div>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+    </div>
+</section>
+
+
 <!-- WHY FROZEN SECTION -->
 <section class="why-frozen-section" style="background:var(--light-color); padding:60px 0;">
     <style>
