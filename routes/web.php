@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Blog;
 use Z3d0X\FilamentFabricator\Models\Page;
@@ -49,5 +50,7 @@ Route::get('/blog/{slug}', function ($slug) {
     return view('pages.blog.detail', compact('blog'));
 })->name('pages.blog.detail');
 
+// Product routes
+Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('products.show');
 
 require __DIR__ . '/auth.php';

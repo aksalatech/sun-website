@@ -39,14 +39,13 @@ class AboutUsPageBlock extends PageBlock
                     ->schema([
                         RichEditor::make('content')
                             ->label('Content')
-                            ->default(`<p class="mb-30">
+                            ->default('<p class="mb-30">
                                 Berdiri sejak tahun 2015, CV BINTANG FAJAR ABADI dengan BRAND UNLEASHIA, EMBRYOLISSE dan IN2IT memiliki basis penjualan online dan offline yang kuat di Indonesia.
                                 Di online UNLEASHIA, EMBRYOLISSE dan IN2IT terdaftar di berbagai e-commerce di Indonesia seperti Shopee Mall, Tokopedia Official Store, Zalora, Lazada Mall, TikTok Shop, Blibli.
                                 </p>
                                 <p class="mb-30">
                                 Sedangkan di offline, CV BINTANG FAJAR ABADI sudah bekerja sama dengan beberapa Modern Channel seperti Guardian, Sociolla, Boots, Watsons, Aeon, Apotek Roxy, Century dan KKV..
-                                </p>
-                            `),
+                                </p>'),
                     ]),
                 Card::make()
                     ->label('Quote')
@@ -61,21 +60,19 @@ class AboutUsPageBlock extends PageBlock
                     ->schema([
                         RichEditor::make('vision')
                             ->label('Vision')
-                            ->default(`<h2>Vision</h2>
+                            ->default('<h2>Vision</h2>
                                 <p>
                                     Become a company that can meet the needs  of Frozen Vegetables and Fruit with quality  products, safe for consumption and halal.
-                                </p>
-                                `),
+                                </p>'),
                         RichEditor::make('mission')
                             ->label('Mission')
-                            ->default(`
-                                <h2>Mission</h2>
+                            ->default('<h2>Mission</h2>
                                 <ul>
                                     <li>Apply the principles of quality and food  safety standards as well as a HALAL guarantee  system in every product produced.</li>
                                     <li>Produce innovative products that are high  quality and safe for consumption and always  provide the best service to consumers.</li>
                                     <li>To uphold ideas, creativity and innovation  for the sustainability and progress of the  company.</li>
                                     <li>Provide positive benefits for the wider  community.</li>
-                                </ul>`),
+                                </ul>'),
                     ]),
                 //HOME - Achievement Section
                 Card::make('Achievement Section')
