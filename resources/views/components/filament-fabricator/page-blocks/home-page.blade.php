@@ -32,7 +32,7 @@
         <div class="row">
             @if($qualityItemsModel->count())
                 @foreach($qualityItemsModel as $item)
-                    <div class="quality-item col-md-3">
+                    <div class="quality-item col-md-3" data-aos="fade-up" data-aos-duration="700" data-aos-delay="{{ 50 + ($loop->index * 100) }}">
                         <div class="d-flex align-items-start gap-4">
                             @if(!empty($item->icon))
                                 <img src="{{ asset('storage/'.$item->icon) }}" alt="icon" style="width:60px; height:60px; object-fit:contain;">
@@ -56,15 +56,15 @@
     </style>
     <div class="container">
         <div class="text-center" style="max-width:980px; margin:0 auto 30px;">
-            <h2 style="font-family: 'Montserrat', sans-serif; font-weight:800;" class="text-dark">{{ $whyFrozenTitle }}</h2>
+            <h2 data-aos="fade-up" data-aos-duration="700" style="font-family: 'Montserrat', sans-serif; font-weight:800;" class="text-dark">{{ $whyFrozenTitle }}</h2>
             @if(!empty($whyFrozenSubtitle))
-            <p style="margin-top:10px; font-weight:600;">{{ $whyFrozenSubtitle }}</p>
+            <p data-aos="fade-up" data-aos-duration="700" data-aos-delay="100" style="margin-top:10px; font-weight:600;">{{ $whyFrozenSubtitle }}</p>
             @endif
         </div>
 
         <div class="why-grid">
             @foreach(($whyFrozenReasons ?? []) as $reason)
-                <div class="why-card" style="background:#fff; border-radius:16px; padding:30px 20px; text-align:center; height:100%;">
+                <div class="why-card" data-aos="fade-up" data-aos-duration="700" data-aos-delay="{{ 50 + ($loop->index * 100) }}" style="background:#fff; border-radius:16px; padding:30px 20px; text-align:center; height:100%;">
                     @if(!empty($reason['icon']))
                         <div style="margin-bottom:20px;">
                             <img src="{{ asset('storage/'.$reason['icon']) }}" alt="icon" style="width:90px; height:90px; object-fit:contain;">
