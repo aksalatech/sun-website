@@ -16,10 +16,6 @@
 <section class="career-list">
     <div class="career-content">
         <!-- Intro -->
-        <div class="career-intro mb-5 text-center" data-aos="fade-up" data-aos-duration="750" >
-            <h2 class="fw-bold">{{ $jobseekTitle }}</h2>
-            <p class="text-muted">{{ $jobseekDescription }}
-        </div>
 
         <!-- Job Listings -->
         @foreach ($vacancies as $vacancy)
@@ -50,7 +46,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-12 text-md-end text-start apply" data-aos="fade-right" data-aos-duration="850">
+                    <div class="col-md-3 col-sm-3 col-xs-12 text-md-end text-right apply" data-aos="fade-right" data-aos-duration="850">
                         <a href="{{ $vacancy['apply_url'] }}" 
                         class="apply-button fw-semibold text-decoration-none align-self-start mt-md-0 mt-3" 
                         target="_blank">

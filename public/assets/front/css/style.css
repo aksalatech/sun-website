@@ -1,5 +1,4 @@
-@import url(https://db.onlinewebfonts.com/c/cf9209cb40da7169670815cd8c1860c9?family=Self+Modern+Regular);
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @font-face{
   font-family: "Self Modern Regular";
   src: url("https://db.onlinewebfonts.com/t/cf9209cb40da7169670815cd8c1860c9.eot");
@@ -3684,18 +3683,25 @@ blockquote *:last-child {
 }
 .about-us-content-section {
     text-align: center;
-    padding: 100px 0;
+    padding: 50px 0;
     font-family: 'Montserrat', sans-serif;
     background-color: #fff;
     color: #000;
 }
 
+.about-us-clients-title {
+  color: #000;
+  text-align: center;
+  font-weight: 700;
+  margin: 0;
+}
+
 .about-us-content-section__text {
-    max-width: 1000px;
-    margin: 0 auto 40px;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.6;
+  margin: 0 auto 40px;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: left;
+  line-height: 2;
 }
 
 .about-us-content-section__separator {
@@ -3709,12 +3715,13 @@ blockquote *:last-child {
     align-items: center;
     gap: 40px;
     flex-wrap: wrap;
-    margin-top: 80px;
+    margin-top: 35px;
 }
 
 .about-us-content-section__logo {
     /* max-height: 80px; */
-    max-width: 200px;
+    height: 120px;
+    width: auto;
     object-fit: contain;
 }
 
@@ -3776,10 +3783,8 @@ blockquote *:last-child {
 
 .about-us-achievement {
     font-family: 'Montserrat', sans-serif;
-    padding: 90px 0;
-    background-size: 90% !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
+    padding: 30px 0;
+    background: #F2BF13;
 }
 
 .about-us-achievement-title {
@@ -3789,14 +3794,11 @@ blockquote *:last-child {
     color: #132B59;
 }
 
-.about-us-achievement-stat {
-    margin: 50px 0;
-}
-
 .about-us-achievement-stat-value {
     font-size: 60px;
     font-weight: bold;
     margin: 10px 0;
+    color: #000;
 }
 
 .about-us-achievement-stat-label {
@@ -3808,16 +3810,11 @@ blockquote *:last-child {
 }
 
 .about-us-achievement-stat-title {
-    text-align: center;
-    font-weight: 700;
-    color: #132B59;
-    max-width: 200px;
-    margin: 0 auto;
-    font-size: 18px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-weight: 700;
+  color: #2F401F;
+  max-width: 70%;
+  margin: 0 auto;
+  font-size: 18px;
 }
 
 /* HOME - Achievement Section */
@@ -4308,22 +4305,23 @@ blockquote *:last-child {
 
 .career-bg-img {
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   object-fit: cover;
 }
 
 .career-header .title {
   position: absolute;
-  top: 50%;
+  bottom: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .career-header .title h1 {
   color: white;
-  font-size: 48px;
+  font-size: 70px;
   font-weight: 800;
   margin: 0;
+  text-transform: uppercase;
 }
 
 /* Career List Section */
@@ -4369,9 +4367,10 @@ blockquote *:last-child {
   justify-content: space-between;
   position: relative;
   align-items: flex-start;
-  border-top: 1px solid #ddd;
-  padding: 30px 0;
+  border-top: 1px solid #000;
+  padding: 20px 0;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 
 .job-info h3 {
@@ -4459,9 +4458,9 @@ blockquote *:last-child {
 .apply-button {
   font-family: "Montserrat", sans-serif;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 24px;
-  color: #111;
+  font-weight: 800;
+  font-size: 28px;
+  color: #000;
   display: inline-flex;
   align-items: center;
   transition: 0.2s ease;
@@ -5091,6 +5090,13 @@ object-fit: cover;
   list-style: disc;
 }
 
+.about-us-content-section__title {
+  text-align: left;
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
 @media (max-width: 768px) {
   .header-dark .dl-trigger .close-icon span {
     background: #fff;
@@ -5456,6 +5462,121 @@ object-fit: cover;
 
   .about-us-achievement-title {
     font-size: 36px;
+  }
+}
+
+/* Vision Mission Section with Different Colors */
+
+.vision-column, .mission-column {
+  padding: 0;
+}
+
+.about-us-vision-mission-section {
+  padding: 0;
+  background: transparent;
+}
+
+.vision-mission-card {
+  height: 100%;
+  min-height: 450px;
+}
+
+.vision-card {
+  padding: 60px 40px 60px 140px;
+  background-color: #2F401F; /* Dark green for vision */
+}
+
+.mission-card {
+  padding: 60px 40px;
+  background-color: #556C40; /* Slightly lighter green for mission */
+}
+
+.vision-mission-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 25px;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.vision-mission-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 65px;
+  height: 6px;
+  background-color: #FFC000; /* Yellow underline */
+}
+
+.vision-mission-content {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 2;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.vision-mission-content p {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.vision-mission-content ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.vision-mission-content ul li {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 0;
+  position: relative;
+  padding-left: 30px;
+}
+
+.vision-mission-content ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.vision-mission-content ol li {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+  padding-left: 10px;
+}
+
+.about-us-video-section {
+  padding: 0 0 100px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .vision-mission-card {
+    padding: 40px 20px;
+    min-height: 300px;
+  }
+  
+  .vision-mission-title { 
+    font-size: 24px;
+  }
+  
+  .vision-mission-content {
+    font-size: 14px;
   }
 }
 

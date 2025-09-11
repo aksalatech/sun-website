@@ -35,15 +35,6 @@ class Careerpage extends PageBlock
                 // Part our mission section
                 Section::make('Daftar Lowongan')
                     ->schema([
-                        TextInput::make('jobseekTitle')
-                            ->label('Header Section')
-                            ->default('Be part of our mission')
-                            ->required(),
-
-                        Textarea::make('jobseekDescription')
-                            ->label('Mission Description')
-                            ->rows(3)
-                            ->required(),
 
                         Repeater::make('vacancies')
                             ->label('Job Vacancy')

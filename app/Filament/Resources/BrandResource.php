@@ -56,80 +56,46 @@ class BrandResource extends Resource
                                     // ->maxSize(1024 * 1024 * 2)
                                     // ->helperText('Maximum size: 2MB'),
 
-                                FileUpload::make('logo_dark')
-                                    ->label('Logo Dark')
-                                    ->image()
-                                    ->imageEditor()
-                                    ->directory('brands'),
+                                // Radio::make('path_type')
+                                //     ->label('Path Type')
+                                //     ->options([
+                                //         'page' => 'Page',
+                                //         'custom' => 'Custom URL',
+                                //     ])
+                                //     ->default('page')
+                                //     ->reactive(),
 
-                                Radio::make('path_type')
-                                    ->label('Path Type')
-                                    ->options([
-                                        'page' => 'Page',
-                                        'custom' => 'Custom URL',
-                                    ])
-                                    ->default('page')
-                                    ->reactive(),
+                                // Select::make('url')
+                                //     ->label('Path Page')
+                                //     ->options(function () {
+                                //         return collect(
+                                //             \Z3d0X\FilamentFabricator\Models\Page::query()
+                                //                 ->pluck('title', 'slug')
+                                //                 ->mapWithKeys(function ($title, $slug) {
+                                //                     return ['/' . $slug => $title];
+                                //                 })
+                                //         );
+                                //     })
+                                //     ->searchable()
+                                //     ->required(fn(callable $get) => $get('path_type') === 'page')
+                                //     ->visible(fn(callable $get) => $get('path_type') === 'page'),
 
-                                Select::make('url')
-                                    ->label('Path Page')
-                                    ->options(function () {
-                                        return collect(
-                                            \Z3d0X\FilamentFabricator\Models\Page::query()
-                                                ->pluck('title', 'slug')
-                                                ->mapWithKeys(function ($title, $slug) {
-                                                    return ['/' . $slug => $title];
-                                                })
-                                        );
-                                    })
-                                    ->searchable()
-                                    ->required(fn(callable $get) => $get('path_type') === 'page')
-                                    ->visible(fn(callable $get) => $get('path_type') === 'page'),
+                                // TextInput::make('url')
+                                //     ->label('Custom URL')
+                                //     // ->prefix('https://')
+                                //     ->required(fn(callable $get) => $get('path_type') === 'custom')
+                                //     ->visible(fn(callable $get) => $get('path_type') === 'custom')
+                                //     ->helperText('example: https://google.com'),
 
-                                TextInput::make('url')
-                                    ->label('Custom URL')
-                                    // ->prefix('https://')
-                                    ->required(fn(callable $get) => $get('path_type') === 'custom')
-                                    ->visible(fn(callable $get) => $get('path_type') === 'custom')
-                                    ->helperText('example: https://google.com'),
-
-                                Toggle::make('is_active')
-                                    ->label('Published')
-                                    ->default(true)
-                                    ->inline(false),
+                                // Toggle::make('is_active')
+                                //     ->label('Published')
+                                //     ->default(true)
+                                //     ->inline(false),
                         ]),
                     ])
                     ->columnSpan(['lg' => 2]),
 
                 // Sidebar area (30%)
-                Grid::make()
-                    ->schema([
-
-                        Section::make('SEO Settings')
-                            ->collapsible()
-                            ->schema([
-                                TextInput::make('meta_title')
-                                    ->maxLength(60)
-                                    ->helperText('Recommended length is 50-60 characters'),
-
-                                TextInput::make('meta_description')
-                                    ->maxLength(160)
-                                    ->helperText('Recommended length is 150-160 characters'),
-
-                                TextInput::make('meta_keywords')
-                                    ->helperText('Separate keywords with commas'),
-                        ])
-                        ->columnSpan(2),
-                        Section::make('Background Image')
-                            ->schema([
-                                FileUpload::make('background')
-                                    ->image()
-                                    ->directory('brands')
-                                    // ->maxSize(1024 * 1024 * 2)
-                                    // ->helperText('Maximum size: 2MB'),
-                        ]),
-                    ])
-                    ->columnSpan(['lg' => 1]),
             ])
                 ->columns(['lg' => 3]),
         ]);
@@ -147,9 +113,6 @@ class BrandResource extends Resource
                     ->limit(50),
 
                 ImageColumn::make('logo')
-                    ->defaultImageUrl(url('/images/placeholder.jpg')),
-
-                ImageColumn::make('background')
                     ->defaultImageUrl(url('/images/placeholder.jpg')),
 
                 ToggleColumn::make('is_active')

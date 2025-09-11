@@ -7,6 +7,10 @@ use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 
 class AboutUsPageBlock extends PageBlock
@@ -55,32 +59,99 @@ class AboutUsPageBlock extends PageBlock
                 Card::make()
                     ->label('Vision and Mission')
                     ->schema([
-                        RichEditor::make('visionMission')
-                            ->label('Vision and Mission')
+                        RichEditor::make('vision')
+                            ->label('Vision')
                             ->default(`<h2>Vision</h2>
                                 <p>
-                                    Menjadi perusahaan terbaik dalam menyediakan produk kecantikan, kesehatan dan lifestyle yang berkualitas tinggi untuk masyarakat Indonesia.
+                                    Become a company that can meet the needs  of Frozen Vegetables and Fruit with quality  products, safe for consumption and halal.
                                 </p>
+                                `),
+                        RichEditor::make('mission')
+                            ->label('Mission')
+                            ->default(`
                                 <h2>Mission</h2>
                                 <ul>
-                                    <li>Membangun kerjasama yang kuat dan berkelanjutan antara pelanggan, pemasok, dan produk.</li>
-                                    <li>Mengidentifikasi masalah dari pelanggan dan memberikan solusi dengan mengadakan kerjasama dan menyediakan produk-produk yang terbukti kualitasnya.</li>
-                                    <li>Bisnis model yang inovatif dengan mempromosikan penjualan dan pemasaran digital dan offline.</li>
-                                    <li>Merangkul pemasok asing dan produk impor untuk membawanya lebih dekat ke konsumen.</li>
-                                    <li>Menyediakan produk berkualitas tinggi untuk menarik konsumen dari segmen menengah dan premium.</li>
+                                    <li>Apply the principles of quality and food  safety standards as well as a HALAL guarantee  system in every product produced.</li>
+                                    <li>Produce innovative products that are high  quality and safe for consumption and always  provide the best service to consumers.</li>
+                                    <li>To uphold ideas, creativity and innovation  for the sustainability and progress of the  company.</li>
+                                    <li>Provide positive benefits for the wider  community.</li>
                                 </ul>`),
-                        FileUpload::make('visionMissionImage')
-                            ->label('Vision and Mission Image')
-                            ->image()
-                            ->imageEditor()
-                            ->directory('about-us')
-                            ->default('about-us/vision-mission.png'),
+                    ]),
+                //HOME - Achievement Section
+                Card::make('Achievement Section')
+                    ->schema([
+                        Repeater::make('achievementStats')
+                            ->label('Achievement Stats')
+                            ->schema([
+                                TextInput::make('value')
+                                    ->required(),
+                                TextInput::make('prefix')
+                                    ->default('+'),
+                                TextInput::make('title')
+                                    ->required(),
+                            ])
+                            ->columns(3)
+                            ->default([
+                                [
+                                    'title' => 'Indonesia Total Populations',
+                                    'value' => '284.2',
+                                    'caption' => 'Million / Year',
+                                ],
+                                [
+                                    'title' => 'Indonesia Internet Users',
+                                    'value' => '221',
+                                    'caption' => 'Million / Year',
+                                ],
+                                [
+                                    'title' => 'BFA Exposure',
+                                    'value' => '125',
+                                    'caption' => 'Million / Year',
+                                ],
+                                [
+                                    'title' => 'BFA Traffic',
+                                    'value' => '12',
+                                    'caption' => 'Million / Year',
+                                ],
+                            ]),
+                    ]),
+                Card::make()
+                    ->label('Video Section')
+                    ->schema([
+                        Toggle::make('enable_video')
+                            ->label('Enable Video')
+                            ->default(false)
+                            ->live(),
+                        Select::make('video_type')
+                            ->label('Video Type')
+                            ->options([
+                                'upload' => 'Upload Video File',
+                                'youtube' => 'YouTube Link',
+                            ])
+                            ->default('upload')
+                            ->live()
+                            ->visible(fn ($get) => $get('enable_video')),
+                        FileUpload::make('video_file')
+                            ->label('Video File')
+                            ->acceptedFileTypes(['video/mp4', 'video/avi', 'video/mov', 'video/wmv'])
+                            ->maxSize(10240) // 10MB
+                            ->visible(fn ($get) => $get('enable_video') && $get('video_type') === 'upload'),
+                        TextInput::make('youtube_url')
+                            ->label('YouTube URL')
+                            ->placeholder('https://www.youtube.com/watch?v=...')
+                            ->url()
+                            ->visible(fn ($get) => $get('enable_video') && $get('video_type') === 'youtube'),
                     ]),
             ]);
     }
 
     public static function mutateData(array $data): array
     {
+        // Ensure video fields have default values
+        $data['enable_video'] = $data['enable_video'] ?? false;
+        $data['video_type'] = $data['video_type'] ?? 'upload';
+        $data['video_file'] = $data['video_file'] ?? null;
+        $data['youtube_url'] = $data['youtube_url'] ?? null;
+        
         return $data;
     }
 }

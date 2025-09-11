@@ -180,9 +180,9 @@ $(document).ready(function () {
   }
   if ($(".brand-slider").length) {
     $(".brand-slider").slick({
-      slidesToShow: 3,
+      slidesToShow: 5.2,
       autoplay: !0,
-      autoplaySpeed: 7000,
+      autoplaySpeed: 3000,
       dots: !0,
       prevArrow: $('.custom-prev'),
       nextArrow: $('.custom-next'),
