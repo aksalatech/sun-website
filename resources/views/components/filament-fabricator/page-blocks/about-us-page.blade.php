@@ -70,7 +70,7 @@
                 ->orderBy('created_at', 'desc')
                 ->get();
             @endphp
-            
+
             @foreach ($brands as $brand)
                 <img src="{{ asset('storage/' . $brand->logo) }}" alt="{{ $brand->title }} Logo" class="about-us-content-section__logo" data-aos="fade-right" data-aos-duration="800"/>
             @endforeach
@@ -90,11 +90,11 @@
                         </video>
                     @elseif(isset($videoType) && $videoType === 'youtube' && isset($youtubeUrl) && $youtubeUrl)
                         <div class="about-us-video-embed">
-                            <iframe 
-                                width="100%" 
-                                height="600" 
-                                src="{{ $youtubeUrl }}" 
-                                frameborder="0" 
+                            <iframe
+                                width="100%"
+                                height="600"
+                                src="{{ $youtubeUrl }}"
+                                frameborder="0"
                                 allowfullscreen>
                             </iframe>
                         </div>
@@ -105,11 +105,3 @@
     </div>
 </section>
 @endif
-
-
-@push('custom-scripts')
-<script>
-    // add class header-dark to header
-    document.querySelector('#header').classList.add('header-dark');
-</script>
-@endpush
