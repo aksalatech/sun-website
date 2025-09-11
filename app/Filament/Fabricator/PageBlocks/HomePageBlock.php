@@ -24,10 +24,6 @@ class HomePageBlock extends PageBlock
                     ->schema([
                         Repeater::make('heroSlides')
                             ->schema([
-                                TextInput::make('heroTitle')->required(),
-                                TextInput::make('heroSubtitle'),
-                                RichEditor::make('heroDescription'),
-
                                 FileUpload::make('image')
                                     ->label('Slide Image / Video')
                                     ->acceptedFileTypes([
@@ -44,16 +40,39 @@ class HomePageBlock extends PageBlock
                                     ->required(),
                             ])
                     ]),
-                //HOME - Brand Section
-                Section::make('Brand Section')
+
+                //HOME - Why Frozen Vegetables & Fruits
+                Section::make('Why Frozen Vegetables & Fruits')
                     ->schema([
-                        TextInput::make('brandTitle')
-                            ->label('Our Brand')
+                        TextInput::make('whyFrozenTitle')
+                            ->default('Why Frozen Vegetables & Fruits')
                             ->required(),
-                        TextInput::make('limit')
-                            ->label('Number of Brands to Show')
-                            ->default(5)
-                            ->numeric(),
+                        Textarea::make('whyFrozenSubtitle')
+                            ->rows(2)
+                            ->default('We flash freeze and package our fruits at their peak ripeness, which locks in nutrition and flavors. This allows you to utilize them at your convenience, without worrying about diminishing freshness or flavor — and that means less food waste.'),
+                        Repeater::make('whyFrozenReasons')
+                            ->label('Reasons')
+                            ->schema([
+                                FileUpload::make('icon')
+                                    ->image()
+                                    ->disk('public')
+                                    ->directory('why-frozen/icons')
+                                    ->maxSize(10240)
+                                    ->label('Icon (png/svg)')
+                                    ->nullable(),
+                                TextInput::make('title')->required(),
+                            ])
+                            ->default([
+                                ['title' => 'Practical in use and easy to store'],
+                                ['title' => 'Guaranteed stock availability throughout the year, with competitive prices'],
+                                ['title' => 'Longer shelf life, and not easily wilted/damaged.'],
+                                ['title' => 'Maintained Nutritional Content'],
+                                ['title' => 'Efficient and effective, and can reduce operational costs'],
+                            ])
+                            ->minItems(1)
+                            ->maxItems(5)
+                            ->collapsed()
+                            ->cloneable(),
                     ]),
                 //HOME - Why Us
                 Section::make('Why Us Section')

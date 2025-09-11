@@ -1,19 +1,6 @@
 @aware(['page'])
-@php
-    $brandProducts = \App\Models\Brand::query()
-        ->where('is_active', true)
-        ->orderBy('created_at', 'desc')
-        ->get();
-@endphp
 <!-- HOME - Hero Banner Section -->
 <div class="main-banner">
-        {{-- <button type="button" class="custom-prev">
-            <img src="{{ asset('assets/front/images/prev-arrow.png') }}" alt="Next" />
-        </button>
-
-        <button type="button" class="custom-next">
-            <img src="{{ asset('assets/front/images/next-arrow.png')}}" alt="Next" />
-        </button> --}}
         <div class="slider arrow-2">
             @foreach ($heroSlides as $item)
             <div>
@@ -27,62 +14,41 @@
                         <img class="image-hero" src="{{ Storage::url($item['image']) }}" alt="oscarthemes" />
                     @endif
                 </div>
-
-                <div class="banner-caption-wrapper">
-                    <div class="container">
-                        <div class="banner-caption caption-style-1">
-                            <div class="clear"></div>
-                                <h4
-                                    data-aos="fade-up"
-                                    class="hero-title">
-                                    {{ $item['heroTitle'] }}
-                                </h4>
-                                <h5
-                                    data-aos="fade-up"
-                                    data-aos-delay="100"
-                                    class="hero-subtitle">
-                                    {{ $item['heroSubtitle'] }}
-                                </h5>
-                                <div
-                                    data-aos="fade-up"
-                                    data-aos-delay="300"
-                                    class="hero-description">
-                                    {!! $item['heroDescription'] !!}
-                                </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             @endforeach
         </div>
     </div>
-<!-- HOME - Brand Section -->
-<section class="brand-section">
-    <div class="brand-header">
-        <h2 data-aos="fade-left">{{ $brandTitle }}</h2>
-    </div>
-    <div class="brand-slider-wrap">
-        <button type="button" class="custom-prev">
-            <img src="{{ asset('assets/front/images/prev-arrow.png') }}" alt="Next" />
-        </button>
 
-        <button type="button" class="custom-next">
-            <img src="{{ asset('assets/front/images/next-arrow.png')}}" alt="Next" />
-        </button>
-        <div class="brand-slider">
-            @foreach ($brandProducts as $product)
-                <a href="{{ $product['url'] ?? '#' }}" target="_blank" class="">
-                    <div class="brand-slide" style="background-image: url('{{ asset('storage/'.$product['background']) }}');">
-                        <div class="brand-content">
-                            <img src="{{ asset('storage/'.$product['logo']) }}" alt="" class="brand-logo" data-aos="fade-up" data-aos-delay="{{ 50 + ($loop->index * 100) }}" data-aos-duration="700">
+
+<!-- WHY FROZEN SECTION -->
+<section class="why-frozen-section" style="background:var(--light-color); padding:60px 0;">
+    <style>
+      .why-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; align-items: stretch; }
+      @media (min-width: 576px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
+      @media (min-width: 768px) { .why-grid { grid-template-columns: repeat(5, 1fr); } }
+    </style>
+    <div class="container">
+        <div class="text-center" style="max-width:980px; margin:0 auto 30px;">
+            <h2 style="font-family: 'Montserrat', sans-serif; font-weight:800;" class="text-dark">{{ $whyFrozenTitle }}</h2>
+            @if(!empty($whyFrozenSubtitle))
+            <p style="margin-top:10px; font-weight:600;">{{ $whyFrozenSubtitle }}</p>
+            @endif
+        </div>
+
+        <div class="why-grid">
+            @foreach(($whyFrozenReasons ?? []) as $reason)
+                <div class="why-card" style="background:#fff; border-radius:16px; padding:30px 20px; text-align:center; height:100%;">
+                    @if(!empty($reason['icon']))
+                        <div style="margin-bottom:20px;">
+                            <img src="{{ asset('storage/'.$reason['icon']) }}" alt="icon" style="width:90px; height:90px; object-fit:contain;">
                         </div>
-                    </div>
-                </a>
+                    @endif
+                    <div style="font-weight:800; line-height:1.3;">{{ $reason['title'] }}</div>
+                </div>
             @endforeach
         </div>
     </div>
 </section>
-
 <!-- HOME - Why us Section -->
 <section class="why-us-section">
     <div class="container">
@@ -101,6 +67,7 @@
         </div>
     </div>
 </section>
+
 
 <!-- HOME - Service Section -->
 <section class="service-section">
