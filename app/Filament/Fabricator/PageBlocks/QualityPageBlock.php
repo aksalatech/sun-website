@@ -16,7 +16,7 @@ class QualityPageBlock extends PageBlock
     {
         return Block::make('quality-page')
             ->schema([
-                Section::make('Hero Quality Section')
+                Section::make('Hero Quality')
                     ->schema([
                         FileUpload::make('heroBackground')
                             ->label('Background Image')
@@ -32,7 +32,7 @@ class QualityPageBlock extends PageBlock
                             ->required(),
                     ]),
 
-                Section::make('Product Guarantee Section')
+                Section::make('Product Guarantee')
                     ->schema([
                         TextInput::make('guaranteeTitle')->default('Product Guarantee')->required(),
                         FileUpload::make('guaranteeImageLeft')
@@ -58,6 +58,41 @@ class QualityPageBlock extends PageBlock
                             ->label('Badges (bottom)')
                             ->schema([
                                 FileUpload::make('image')->image()->disk('public')->directory('quality/badges')->maxSize(10240)->required(),
+                            ])
+                            ->collapsed(),
+                    ]),
+                Section::make('Quality Certification')
+                    ->schema([
+                        // Certification layout (optional)
+                        TextInput::make('certTitle')->label('Certification Title')->default('CERTIFICATION'),
+                        Repeater::make('certificates')
+                            ->label('Certificates (Top Row)')
+                            ->schema([
+                                FileUpload::make('image')->image()->disk('public')->directory('quality/certificates')->maxSize(51200)->required(),
+                            ])
+                            ->collapsed(),
+                        Repeater::make('certBadges')
+                            ->label('Certification Badges (Bottom)')
+                            ->schema([
+                                FileUpload::make('image')->image()->disk('public')->directory('quality/certificates')->maxSize(20480)->required(),
+                            ])
+                            ->collapsed(),
+                    ]),
+                Section::make('Quality Steps Section')
+                    ->schema([
+                        TextInput::make('stepsTitle')->default('Quality Process with the Best Workforce and Infrastructure')->required(),
+                        RichEditor::make('stepsSubtitle')
+                            ->label('Subtitle')
+                            ->default('For many years PT. Suryatama Usaha Nusantara Food is able to penetrate the Indonesian national market which is very competitive and has similar product competitors with very many variants.<br/>Our success is also due to our contribution to reliability in handling upstream to downstream distribution, namely from neat packaging, safe transport of cargo, careful documentation, and transportation and logistics that maintain excellent quality and taste.'),
+                        Repeater::make('stepsImages')
+                            ->label('Gallery Images')
+                            ->schema([
+                                FileUpload::make('image')
+                                    ->image()
+                                    ->disk('public')
+                                    ->directory('quality/steps')
+                                    ->maxSize(51200)
+                                    ->required(),
                             ])
                             ->collapsed(),
                     ]),

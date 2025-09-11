@@ -4146,6 +4146,16 @@ blockquote *:last-child {
 .guarantee-row-icon { width: 60px; height: 60px; object-fit: contain; }
 .guarantee-row-text { font-weight: 700; color: #1F2E11; }
 
+/* QUALITY PAGE - CTA & STEPS */
+.quality-cta { background: #F6F6F6; }
+.quality-step-card { background: #fff; border: 1px solid #eee; border-radius: 10px; }
+.quality-step-desc { font-weight: 600; }
+
+/* QUALITY PAGE - CERTIFICATIONS */
+.quality-cert-img { height: 260px; width: auto; object-fit: contain; }
+.quality-cert-badge { height: 75px; width: auto; object-fit: contain; }
+.quality-section-title { color: #1F2E11; text-align: center; font-weight: 800; margin-bottom: 24px; font-family: 'Montserrat', sans-serif; }
+
 @media (max-width: 992px) {
   /* Teks center untuk semua konten mobile */
   .contact-title,
