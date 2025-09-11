@@ -40,6 +40,17 @@
 .primary-btn:hover {
     background: var(--primary-color-dark);
 }
+.secondary-btn {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.secondary-btn:hover {
+    background: var(--secondary-color-dark);
+    color: #fff;
+}
 .container {
     max-width: 1200px;
 }
@@ -4086,6 +4097,35 @@ blockquote *:last-child {
   opacity: 1;
 }
 
+/* HOME - Quality Section */
+.quality-section { background: #F2BF13; padding: 30px 0; }
+.quality-container { max-width: 1350px; }
+.quality-item-inner { display: flex; align-items: flex-start; gap: 16px; }
+.quality-icon { width: 60px; height: 60px; object-fit: contain; }
+.quality-text { font-weight: 600; color: #1F2E11; }
+
+/* HOME - About Overlay */
+.about-overlay-section { position: relative; }
+.about-overlay-wrapper { position: relative; }
+.about-bg { width: 100%; height: 90vh; object-fit: cover; filter: brightness(60%); }
+.about-bg-tint { background: #2F401F80; width: 100%; height: 90vh; position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+.about-overlay-container { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; }
+.about-content { max-width: 520px; }
+.about-title { color: #fff; font-weight: 800; }
+.about-text { color: #fff; margin: 20px 0; padding-bottom: 2px; line-height: 1.75; }
+.about-badges { position: absolute; bottom: 50px; right: 50px; }
+.about-badge-img { width: auto; height: 130px; margin-left: 20px; }
+
+/* HOME - Why Frozen */
+.why-frozen-section { background: var(--light-color); padding: 60px 0; }
+.why-title { font-family: 'Montserrat', sans-serif; font-weight: 800; }
+.why-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; align-items: stretch; }
+@media (min-width: 576px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 768px) { .why-grid { grid-template-columns: repeat(5, 1fr); } }
+.why-card { background: #fff; border-radius: 16px; padding: 30px 20px; text-align: center; height: 100%; }
+.why-icon { width: 90px; height: 90px; object-fit: contain; }
+.why-icon-wrap { margin-bottom: 20px; }
+
 @media (max-width: 992px) {
   /* Teks center untuk semua konten mobile */
   .contact-title,
@@ -5570,11 +5610,11 @@ object-fit: cover;
     padding: 40px 20px;
     min-height: 300px;
   }
-  
-  .vision-mission-title { 
+
+  .vision-mission-title {
     font-size: 24px;
   }
-  
+
   .vision-mission-content {
     font-size: 14px;
   }

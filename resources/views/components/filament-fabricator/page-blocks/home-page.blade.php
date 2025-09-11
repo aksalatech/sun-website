@@ -20,6 +20,8 @@
     </div>
 
 
+
+
 <!-- QUALITY CHECKS SECTION -->
 @php
     $qualityItemsModel = \App\Models\QualityCheck::query()
@@ -27,17 +29,17 @@
         ->orderBy('order')
         ->get();
 @endphp
-<section class="quality-section" style="background: #F2BF13; padding:30px 0;">
-    <div class="container" style="max-width: 1350px;">
+<section class="quality-section">
+    <div class="container quality-container">
         <div class="row">
             @if($qualityItemsModel->count())
                 @foreach($qualityItemsModel as $item)
                     <div class="quality-item col-md-3" data-aos="fade-up" data-aos-duration="700" data-aos-delay="{{ 50 + ($loop->index * 100) }}">
-                        <div class="d-flex align-items-start gap-4">
+                        <div class="quality-item-inner">
                             @if(!empty($item->icon))
-                                <img src="{{ asset('storage/'.$item->icon) }}" alt="icon" style="width:60px; height:60px; object-fit:contain;">
+                                <img src="{{ asset('storage/'.$item->icon) }}" alt="icon" class="quality-icon">
                             @endif
-                            <div style="font-weight:600; color:#1F2E11;">{!! $item->text !!}</div>
+                            <div class="quality-text">{!! $item->text !!}</div>
                         </div>
                     </div>
                 @endforeach
@@ -48,15 +50,37 @@
 
 
 <!-- WHY FROZEN SECTION -->
-<section class="why-frozen-section" style="background:var(--light-color); padding:60px 0;">
-    <style>
-      .why-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; align-items: stretch; }
-      @media (min-width: 576px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
-      @media (min-width: 768px) { .why-grid { grid-template-columns: repeat(5, 1fr); } }
-    </style>
+<!-- ABOUT OVERLAY SECTION (Inserted under Quality) -->
+<section class="about-overlay-section">
+    <div class="about-overlay-wrapper ">
+        @if(!empty($aboutOverlayBackground))
+        <img src="{{ asset('storage/'.$aboutOverlayBackground) }}" alt="about" class="about-bg">
+        <div class="about-bg-tint"></div>
+        @endif
+        <div class="container about-overlay-container">
+            <div class="about-content">
+                <h3 data-aos="fade-up" data-aos-duration="700" class="about-title">{{ $aboutOverlayTitle }}</h3>
+                <div data-aos="fade-up" data-aos-duration="700" data-aos-delay="100" class="about-text">{!! $aboutOverlayText !!}</div>
+                @if(!empty($aboutOverlayButtonText))
+                    <a href="{{ url($aboutOverlayButtonLink ?? '#') }}" class="secondary-btn px-5" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">{{ $aboutOverlayButtonText }}</a>
+                @endif
+            </div>
+            @if(!empty($aboutOverlayBadges))
+                <div class="ml-auto d-none d-md-block about-badges" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
+                    @foreach ($aboutOverlayBadges as $badge)
+                        <img src="{{ asset('storage/'.$badge['image']) }}" alt="badge" class="about-badge-img">
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    </div>
+</section>
+
+
+<section class="why-frozen-section">
     <div class="container">
         <div class="text-center" style="max-width:980px; margin:0 auto 30px;">
-            <h2 data-aos="fade-up" data-aos-duration="700" style="font-family: 'Montserrat', sans-serif; font-weight:800;" class="text-dark">{{ $whyFrozenTitle }}</h2>
+            <h2 data-aos="fade-up" data-aos-duration="700" class="text-dark why-title">{{ $whyFrozenTitle }}</h2>
             @if(!empty($whyFrozenSubtitle))
             <p data-aos="fade-up" data-aos-duration="700" data-aos-delay="100" style="margin-top:10px; font-weight:600;">{{ $whyFrozenSubtitle }}</p>
             @endif
@@ -64,10 +88,10 @@
 
         <div class="why-grid">
             @foreach(($whyFrozenReasons ?? []) as $reason)
-                <div class="why-card" data-aos="fade-up" data-aos-duration="700" data-aos-delay="{{ 50 + ($loop->index * 100) }}" style="background:#fff; border-radius:16px; padding:30px 20px; text-align:center; height:100%;">
+                <div class="why-card" data-aos="fade-up" data-aos-duration="700" data-aos-delay="{{ 50 + ($loop->index * 100) }}">
                     @if(!empty($reason['icon']))
-                        <div style="margin-bottom:20px;">
-                            <img src="{{ asset('storage/'.$reason['icon']) }}" alt="icon" style="width:90px; height:90px; object-fit:contain;">
+                        <div class="why-icon-wrap">
+                            <img src="{{ asset('storage/'.$reason['icon']) }}" alt="icon" class="why-icon">
                         </div>
                     @endif
                     <div style="font-weight:800; line-height:1.3;">{{ $reason['title'] }}</div>
@@ -76,6 +100,7 @@
         </div>
     </div>
 </section>
+
 <!-- HOME - Why us Section -->
 <section class="why-us-section">
     <div class="container">
@@ -94,7 +119,6 @@
         </div>
     </div>
 </section>
-
 
 <!-- HOME - Service Section -->
 <section class="service-section">

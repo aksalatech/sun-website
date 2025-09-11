@@ -41,6 +41,42 @@ class HomePageBlock extends PageBlock
                             ])
                     ]),
 
+                //HOME - About Overlay Section (under Quality)
+                Section::make('About Overlay Section')
+                    ->schema([
+                        FileUpload::make('aboutOverlayBackground')
+                            ->label('Background Image')
+                            ->image()
+                            ->disk('public')
+                            ->directory('about')
+                            ->maxSize(51200)
+                            ->required(),
+                        TextInput::make('aboutOverlayTitle')
+                            ->label('Title')
+                            ->default('About Us')
+                            ->required(),
+                        RichEditor::make('aboutOverlayText')
+                            ->label('Text')
+                            ->default('PT suryatama usaha nusantara (Sunfrozen) was founded in 2023. We are the leading supplier of frozen vegetables, frozen berries and frozen fruits in...'),
+                        TextInput::make('aboutOverlayButtonText')
+                            ->label('Button Text')
+                            ->default('More'),
+                        TextInput::make('aboutOverlayButtonLink')
+                            ->label('Button Link')
+                            ->default('/about-us'),
+                        Repeater::make('aboutOverlayBadges')
+                            ->label('Badges (e.g., certifications)')
+                            ->schema([
+                                FileUpload::make('image')
+                                    ->image()
+                                    ->disk('public')
+                                    ->directory('about/badges')
+                                    ->maxSize(10240)
+                                    ->required(),
+                            ])
+                            ->collapsed(),
+                    ]),
+
                 //HOME - Why Frozen Vegetables & Fruits
                 Section::make('Why Frozen Vegetables & Fruits')
                     ->schema([
@@ -126,7 +162,7 @@ class HomePageBlock extends PageBlock
                             ->collapsed()
                             ->cloneable(),
                     ]),
-                
+
                 //HOME - Market Penetration Section
                 Section::make('Market Penetration Section')
                     ->schema([
