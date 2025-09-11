@@ -13,6 +13,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Str;
+use Filament\Forms\Get;
+use Illuminate\Database\Eloquent\Model;
 
 class GlobalSettingResource extends Resource
 {
@@ -55,26 +57,58 @@ class GlobalSettingResource extends Resource
                                         'uploader' => 'File Uploader',
                                     ])
                                     ->required()
-                                    ->live(),
+                                    ->live(onBlur: true),
 
-                                Forms\Components\TextInput::make('content')
-                                    ->visible(fn(callable $get) => $get('input_type') === 'text'),
-
-                                Forms\Components\Textarea::make('content')
-                                    ->visible(fn(callable $get) => $get('input_type') === 'textarea')
-                                    ->rows(4),
-
-                                Forms\Components\RichEditor::make('content')
-                                    ->visible(fn(callable $get) => $get('input_type') === 'richtext'),
-
-                                Forms\Components\TextInput::make('content')
-                                    ->numeric()
-                                    ->visible(fn(callable $get) => $get('input_type') === 'number'),
-
-                                Forms\Components\FileUpload::make('content')
-                                    ->visible(fn(callable $get) => $get('input_type') === 'uploader')
-                                    ->directory('settings')
-                                ->preserveFilenames(),
+                                Forms\Components\Group::make()
+                                    ->schema(function (Get $get) {
+                                        return match ($get('input_type')) {
+                                            'text' => [
+                                                Forms\Components\TextInput::make('content')
+                                                    ->afterStateHydrated(function ($component, $state, ?Model $record) {
+                                                        if ($record) {
+                                                            $component->state($record->content);
+                                                        }
+                                                    }),
+                                            ],
+                                            'textarea' => [
+                                                Forms\Components\Textarea::make('content')
+                                                    ->rows(4)
+                                                    ->afterStateHydrated(function ($component, $state, ?Model $record) {
+                                                        if ($record) {
+                                                            $component->state($record->content);
+                                                        }
+                                                    }),
+                                            ],
+                                            'richtext' => [
+                                                Forms\Components\RichEditor::make('content')
+                                                    ->afterStateHydrated(function ($component, $state, ?Model $record) {
+                                                        if ($record) {
+                                                            $component->state($record->content);
+                                                        }
+                                                    }),
+                                            ],
+                                            'number' => [
+                                                Forms\Components\TextInput::make('content')
+                                                    ->numeric()
+                                                    ->afterStateHydrated(function ($component, $state, ?Model $record) {
+                                                        if ($record) {
+                                                            $component->state($record->content);
+                                                        }
+                                                    }),
+                                            ],
+                                            'uploader' => [
+                                                Forms\Components\FileUpload::make('content')
+                                                    ->directory('settings')
+                                                    ->preserveFilenames()
+                                                    ->afterStateHydrated(function ($component, $state, ?Model $record) {
+                                                        if ($record) {
+                                                            $component->state($record->content);
+                                                        }
+                                                    }),
+                                            ],
+                                            default => [],
+                                        };
+                                    }),
 
 
                                 Forms\Components\TextInput::make('group'),
