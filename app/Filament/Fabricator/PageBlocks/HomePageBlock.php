@@ -9,6 +9,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Builder\Block;
+use Filament\Forms\Components\Toggle;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\FileUpload;
@@ -110,96 +111,34 @@ class HomePageBlock extends PageBlock
                             ->collapsed()
                             ->cloneable(),
                     ]),
-                //HOME - Why Us
-                Section::make('Why Us Section')
+                //HOME - About Us Video Section
+                Section::make('About Us Video Section (Bottom)')
                     ->schema([
-                        TextInput::make('whyTitle')
-                            ->label('Title')
-                            ->default('Why Do Our Partners Trust Us?')
-                            ->required(),
-                        TextInput::make('whySubtitle')
-                            ->label('Subtitle')
-                            ->default('FOR PARTNERS')
-                            ->required(),
-                        RichEditor::make('whyDescription')
-                            ->label('Description')
-                            ->required()
-                            ->default('Berdiri sejak tahun 2015, CV BINTANG FAJAR ABADI dengan BRAND UNLEASHIA, EMBRYOLISSE dan IN2IT memiliki basis penjualan online dan offline yang kuat di Indonesia. Di online UNLEASHIA, EMBRYOLISSE dan IN2IT terdaftar di berbagai e-commerce di Indonesia seperti Shopee Mall, Tokopedia Official Store, Zalora, Lazada Mall, TikTok Shop, Blibli.'),
-                        FileUpload::make('whyImage')
-                            ->label('Why Image')
-                            ->image()
-                            ->maxSize(51200)
-                            ->disk('public')
-                            ->directory('image')
-                            ->required(),
-                    ]),
-                //HOME - Our Service
-                Section::make('Service Section')
-                    ->schema([
-                        TextInput::make('serviceSectionTitle')
-                            ->label('Title')
-                            ->default('OUR SERVICE')
-                            ->required(),
-                        Repeater::make('serviceList')
-                            ->label('Service List')
-                            ->schema([
-                                FileUpload::make('serviceImage')
-                                    ->label('Service Image')
-                                    ->image()
-                                    ->maxSize(51200)
-                                    ->disk('public')
-                                    ->directory('service')
-                                    ->required(),
-                                TextInput::make('serviceTitle')
-                                    ->label('Title')
-                                    ->default('EXCLUSIVE DISTRIBUTIONS')
-                                    ->required(),
-                                RichEditor::make('serviceDescription')
-                                    ->label('Description')
-                                    ->required()
-                                    ->default('Provide high quality products to attact mid and premium consumer segments'),
+                        Select::make('aboutVideoType')
+                            ->label('Video Source')
+                            ->options([
+                                'upload' => 'Upload',
+                                'youtube' => 'YouTube URL',
                             ])
-                            ->collapsed()
-                            ->cloneable(),
-                    ]),
+                            ->default('upload')
+                            ->live(),
 
-                //HOME - Market Penetration Section
-                Section::make('Market Penetration Section')
-                    ->schema([
-                        FileUpload::make('marketBackground')
-                            ->label('Background')
-                            ->image()
-                            ->maxSize(51200)
+                        FileUpload::make('aboutVideoFile')
+                            ->label('Video File (mp4)')
+                            ->acceptedFileTypes(['video/mp4'])
                             ->disk('public')
-                            ->directory('product')
-                            ->required(),
+                            ->directory('about/video')
+                            ->maxSize(102400)
+                            ->visible(fn(\Filament\Forms\Get $get) => $get('aboutVideoType') === 'upload'),
 
-                        FileUpload::make('marketIcon')
-                            ->label('Logo')
-                            ->image()
-                            ->maxSize(51200)
-                            ->disk('public')
-                            ->directory('product')
-                            ->required(),
+                        TextInput::make('aboutYoutubeUrl')
+                            ->label('YouTube Embed URL')
+                            ->placeholder('https://www.youtube.com/embed/VIDEO_ID')
+                            ->visible(fn(\Filament\Forms\Get $get) => $get('aboutVideoType') === 'youtube'),
 
-                        TextInput::make('marketText')
-                            ->label('Text')
-                            ->required(),
-
-                        FileUpload::make('marketCountryImage')
-                            ->label('Country Image')
-                            ->acceptedFileTypes([
-                                'image/jpeg',
-                                'image/png',
-                                'image/webp',
-                                'video/mp4',
-                                'video/quicktime',
-                                'video/x-msvideo',
-                            ])
-                            ->maxSize(51200)
-                            ->disk('public')
-                            ->directory('product')
-                            ->required(),
+                        Toggle::make('aboutEnableVideo')
+                            ->label('Enable Section')
+                            ->default(true),
                     ])
             ]);
     }
