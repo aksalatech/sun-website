@@ -24,6 +24,7 @@
     --primary-color-dark: #1F2E11;
     --secondary-color: #F2BF13;
     --secondary-color-dark: #E0A40A;
+    --light-color: #F5F5F5;
     --footer-bg: #2F401F;
     --footer-cta-bg: #F2BF13;
     --footer-text: #fff;
@@ -101,7 +102,7 @@
 /* Footer main */
 .footer-main {
     background: var(--footer-bg);
-    padding: 50px 0 30px;
+    padding: 60px 0 0 0;
 }
 
 .footer-grid {
@@ -131,9 +132,11 @@
 }
 
 .footer-title {
-    font-weight: 800;
+    font-weight: 700;
+    font-size: 16px;
     color: #fff;
-    margin-bottom: 14px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
 }
 .footer-links {
     list-style: none;

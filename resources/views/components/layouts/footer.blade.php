@@ -1,5 +1,5 @@
 @php
-    $logoFooter = \App\Models\GlobalSetting::getContentBySlug('logo-footer');
+    $companyName = \App\Models\GlobalSetting::getContentBySlug('company-name');
     $siteTitle = \App\Models\GlobalSetting::getContentBySlug('site-title');
     $copyright = \App\Models\GlobalSetting::getContentBySlug('copyright');
     $menuItems = \App\Models\Menu::query()
@@ -35,7 +35,7 @@
     <div class="container">
       <div class="row footer-grid">
         <div class="col-md-4 col-sm-6">
-          <h5 class="footer-company">PT SURYATAMA USAHA NUSANTARA</h5>
+          <h5 class="footer-title">{{ $companyName }}</h5>
           <ul class="footer-contact">
             @foreach ($information as $i => $contact)
               @break($i >= 3)
