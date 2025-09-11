@@ -29,6 +29,9 @@ Route::get('/tour/{id}', [PageController::class, 'toursDetail'])->name('page.tou
 
 Route::post('/contact/send-email', [PageController::class, 'sendEmail'])->name('contact.send-email');
 
+// Partnership inquiries store
+Route::post('/partnership-inquiries', [\App\Http\Controllers\PartnershipInquiryController::class, 'store'])->name('partnership.inquiries.store');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
