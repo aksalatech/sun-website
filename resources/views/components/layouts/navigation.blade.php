@@ -20,7 +20,7 @@
   <div class="navigation-outer">
     <div class="fluid-container">
       <div class="navigation-row row align-items-center justify-content-center">
-        <div class="col-lg-2">
+        <div class="col-md-2">
           <div class="logo">
             <img src="{{ asset('storage/logo/logo.png') }}" alt="" />
             <h1 class="logo-text">
@@ -31,7 +31,7 @@
         </div>
 
         <!--Navigation Start -->
-        <div class="col-lg-8">
+        <div class="col-md-8">
           <nav class="navigation">
             <ul>
               @foreach($menuItems as $item)
@@ -49,47 +49,44 @@
             </ul>
           </nav>
         </div>
-        <!--Navigation End -->
-        <div class="col-lg-2">
-          <a href="{{ url('/contact-us') }}" class="btn-contact-us">Contact Us</a>
-        </div>
       </div>
 
       <!--DL Menu Start-->
 
-      <div id="responsive-navigation" class="dl-menuwrapper">
+      <div id="responsive-navigation" class="dl-menuwrapper px-5">
         <a href="{{ url('/') }}">
-          <div class="logo">
+            <div class="logo">
             <img src="{{ asset('storage/logo/logo.png') }}" alt="" />
-          </div>
+            <h1 class="logo-text">
+                Supplying Frozen Goodness <br/>
+                for Every Table
+            </h1>
+            </div>
         </a>
 
         <button class="dl-trigger">
-          <span class="close-icon">
+            <span class="close-icon">
             <span></span>
-
             <span></span>
-
             <span></span>
-          </span>
+            </span>
         </button>
-
         <ul class="dl-menu dl-menu-toggle">
-          @foreach($menuItems as $item)
+            @foreach($menuItems as $item)
             <li class="">
-              <a href="{{ $item->path }}" @if($item->title == "Brands") class="have-children" @endif> {{ $item->title }}</a>
-              @if($item->title == "Brands")
+                <a href="{{ $item->path }}" @if($item->title == "Brands") class="have-children" @endif> {{ $item->title }}</a>
+                @if($item->title == "Brands")
                 <ul class="children">
-                  @foreach($brandItems as $sub)
+                    @foreach($brandItems as $sub)
                     <li><a href="{{ $sub->url }}">{{ $sub->title }}</a></li>
-                  @endforeach
+                    @endforeach
                 </ul>
-              @endif
+                @endif
             </li>
-          @endforeach
-          <li>
+            @endforeach
+            <li>
             <a href="{{ url('/contact-us') }}">Contact Us</a>
-          </li>
+            </li>
         </ul>
       </div>
     </div>

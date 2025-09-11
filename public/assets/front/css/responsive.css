@@ -163,8 +163,14 @@
     display: none;
   }
   .header-2 .dl-menuwrapper {
-    display: block;
-    margin-left: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .header-2 .navigation-row {
+    display: none;
   }
   .header-2 .navigation-outer .cd-search-trigger {
     float: right;

@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     min-width: 350px;
     gap: 10px;
 }
@@ -485,12 +485,6 @@ a.join-meeting {
   position: relative;
   bottom: -2px;
 }
-.header-2 .logo {
-  /* top: -37px; */
-  padding: 10px 0;
-  margin-left: 70px;
-  position: relative;
-}
 .navigation-outer {
   background: transparent;
   float: left;
@@ -519,7 +513,7 @@ a.join-meeting {
 .header-2 .navigation ul {
   display: flex;
   width: 100%;
-  justify-content: center;
+  justify-content: end;
 }
 
 
@@ -5051,7 +5045,7 @@ object-fit: cover;
   }
 
   .header-2 .dl-menuwrapper .dl-menu {
-    margin-top: 70px;
+    margin-top: 500px;
   }
 }
 
@@ -5282,10 +5276,6 @@ object-fit: cover;
     padding: 45px 0;
   }
 
-  .dl-menuwrapper .logo img{
-    margin-left: 15px;
-  }
-
 
   .navigation-row {
     display: none;
@@ -5326,7 +5316,7 @@ object-fit: cover;
   }
 
   .header-2 .dl-menuwrapper .dl-menu {
-    margin-top: 54px;
+    margin-top: 550px;
   }
 
   .dl-menuwrapper li a {
