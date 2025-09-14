@@ -100,27 +100,3 @@
     </div>
 </section>
 
-<style>
-    .partner-hero{position:relative}
-    .partner-hero-bg{width:100%;height:100vh;object-fit:cover}
-    .partner-hero-tint{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.4), rgba(0,0,0,.2))}
-    .partner-hero-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-start}
-    .partner-hero-title{color:#fff;font-weight:800;max-width:500px}
-    .partner-hero-card{position:absolute;right:10%;top:10%;width:220px}
-
-    .partner-why{background: #f5f5f5;padding:150px 0}
-    .partner-why-card{display:none}
-
-    .partner-process{padding-bottom:150px; background: #f5f5f5;}
-    .partner-process-subtitle{max-width:800px;margin:0 auto;font-weight:600}
-    .partner-step{background:#fff;border:1px solid #eee;border-radius:10px;padding:12px 16px}
-    .partner-step-badge{color:#000;border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;}
-    .partner-stat-value{font-weight:800;font-size:32px; color:#000;}
-    .partner-stat-label{font-size:12px;font-weight:800; color:#000;}
-    .partner-stats{background:#F2BF13;padding:50px 0}
-    .partner-form{padding:100px 0 150px 0;background:#f5f5f5;}
-    .form-control, .enter-email input[type="text"]{background-color:#fff !important; border-radius:5px !important;}
-    .partner-form-label{font-weight:800;font-size:14px; color:#000;}
-</style>
-
-

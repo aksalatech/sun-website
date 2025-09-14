@@ -7,29 +7,29 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="keywords" content="{{ $page->meta_keywords ?? 'Bintang Fajar Abadi, HST, Unleashia, Embryollise, in2it, skincare' }}" />
-        <meta name="description" content="{{ $page->meta_description ?? 'BINTANG FAJAR ABADI with the BRANDS UNLEASHIA, EMBRYOLISSE and HST has a strong online and offline sales base in Indonesia' }}" />
+        <meta name="keywords" content="{{ $page->meta_keywords ?? 'Sun Frozen, frozen vegetables, frozen berries, frozen fruits, PT Suryatama Usaha Nusantara, frozen foods supplier' }}" />
+        <meta name="description" content="{{ $page->meta_description ?? 'PT Suryatama Usaha Nusantara (Sunfrozen) with the BRANDS UNLEASHIA, EMBRYOLISSE and HST has a strong online and offline sales base in Indonesia' }}" />
         <meta name="author" content="" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Open Graph (Facebook, LinkedIn, etc) -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:title" content="{{ $page->meta_title ?? 'Bintang Fajar Abadi - Official Distributor' }}">
-        <meta property="og:description" content="{{ $page->meta_description ?? 'BINTANG FAJAR ABADI with the BRANDS UNLEASHIA, EMBRYOLLISSE and HST has a strong online and offline sales base in Indonesia' }}">
+        <meta property="og:title" content="{{ $page->meta_title ?? 'Sun Frozen - Leading Frozen Foods Supplier' }}">
+        <meta property="og:description" content="{{ $page->meta_description ?? 'PT Suryatama Usaha Nusantara (Sunfrozen) - Leading supplier of frozen vegetables, frozen berries and frozen fruits. Bringing the world's best vegetables and fruit to your kitchen.' }}">
         <meta property="og:image" content="{{ asset('storage/' . $metaImage ?? 'assets/front/images/default.png') }}">
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{{ url()->current() }}">
-        <meta name="twitter:title" content="{{ $page->meta_title ?? 'Bintang Fajar Abadi - Official Distributor' }}">
-        <meta name="twitter:description" content="{{ $page->meta_description ?? 'BINTANG FAJAR ABADI with the BRANDS UNLEASHIA, EMBRYOLLISSE and HST has a strong online and offline sales base in Indonesia' }}">
+        <meta name="twitter:title" content="{{ $page->meta_title ?? 'Sun Frozen - Leading Frozen Foods Supplier' }}">
+        <meta name="twitter:description" content="{{ $page->meta_description ?? 'PT Suryatama Usaha Nusantara (Sunfrozen) - Leading supplier of frozen vegetables, frozen berries and frozen fruits. Bringing the world's best vegetables and fruit to your kitchen.' }}">
         <meta name="twitter:image" content="{{ asset('storage/' . $metaImage ?? 'assets/front/images/default.png') }}">
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/front/images/favicon.png') }}" />
 
-        <title>{{ $page->title }} - {{ config('app.name', 'Bintang Fajar Abadi') }}</title>
+        <title>{{ $page->title }} - {{ config('app.name', 'Sun Frozen') }}</title>
 
         <!-- Scripts -->
         <link href="{{ asset('assets/front/css/fonts.css') }}" rel="stylesheet" />

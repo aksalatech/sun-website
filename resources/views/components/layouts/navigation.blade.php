@@ -53,7 +53,7 @@
 
       <!--DL Menu Start-->
 
-      <div id="responsive-navigation" class="dl-menuwrapper px-5">
+      <div id="responsive-navigation" class="dl-menuwrapper px-2">
         <a href="{{ url('/') }}">
             <div class="logo">
             <img src="{{ asset('storage/logo/logo.png') }}" alt="" />
@@ -84,9 +84,6 @@
                 @endif
             </li>
             @endforeach
-            <li>
-            <a href="{{ url('/contact-us') }}">Contact Us</a>
-            </li>
         </ul>
       </div>
     </div>
