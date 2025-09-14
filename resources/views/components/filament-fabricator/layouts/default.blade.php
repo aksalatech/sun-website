@@ -16,14 +16,14 @@
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
         <meta property="og:title" content="{{ $page->meta_title ?? 'Sun Frozen - Leading Frozen Foods Supplier' }}">
-        <meta property="og:description" content="{{ $page->meta_description ?? 'PT Suryatama Usaha Nusantara (Sunfrozen) - Leading supplier of frozen vegetables, frozen berries and frozen fruits. Bringing the world's best vegetables and fruit to your kitchen.' }}">
+        <meta property="og:description" content="{{ $page->meta_description ?? 'PT Suryatama Usaha Nusantara (Sunfrozen) - Leading supplier of frozen vegetables, frozen berries and frozen fruits. Bringing the world best vegetables and fruit to your kitchen.' }}">
         <meta property="og:image" content="{{ asset('storage/' . $metaImage ?? 'assets/front/images/default.png') }}">
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{{ url()->current() }}">
         <meta name="twitter:title" content="{{ $page->meta_title ?? 'Sun Frozen - Leading Frozen Foods Supplier' }}">
-        <meta name="twitter:description" content="{{ $page->meta_description ?? 'PT Suryatama Usaha Nusantara (Sunfrozen) - Leading supplier of frozen vegetables, frozen berries and frozen fruits. Bringing the world's best vegetables and fruit to your kitchen.' }}">
+        <meta name="twitter:description" content="{{ $page->meta_description ?? 'PT Suryatama Usaha Nusantara (Sunfrozen) - Leading supplier of frozen vegetables, frozen berries and frozen fruits. Bringing the world best vegetables and fruit to your kitchen.' }}">
         <meta name="twitter:image" content="{{ asset('storage/' . $metaImage ?? 'assets/front/images/default.png') }}">
 
         <!-- Favicon -->
