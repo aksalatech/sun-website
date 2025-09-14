@@ -3,6 +3,7 @@
 namespace App\Filament\Fabricator\PageBlocks;
 
 use Filament\Forms\Components\Builder\Block;
+use Filament\Forms\Components\Card;
 use Z3d0X\FilamentFabricator\PageBlocks\PageBlock;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -17,13 +18,21 @@ class ContactUsPageBlock extends PageBlock
     {
         return Block::make('contact-us-page')
             ->schema([
+                Card::make()
+                    ->label('Banner')
+                    ->schema([
+                        FileUpload::make('banner')
+                            ->label('Banner')
+                            ->image()
+                            ->imageEditor()
+                            ->default('about-us/banner.png'),
+                    ]),
                 Section::make('Detail Section')
                     ->schema([
-                        TextInput::make('title')->required(),
+                        TextInput::make('title'),
                         Textarea::make('description')
                             ->label('Deskripsi')
-                            ->rows(3)
-                            ->required(),
+                            ->rows(3),
 
                         Repeater::make('information')
                             ->label('Informasi Kontak')
@@ -38,31 +47,12 @@ class ContactUsPageBlock extends PageBlock
                                     ->label('Contact Details')
                                     ->required(),
                             ]),
-
-                        Repeater::make('brandLogos')
-                            ->label('Brand Logos')
-                            ->schema([
-                                FileUpload::make('logo')
-                                    ->label('Logo Brand')
-                                    ->image()
-                                    ->maxSize(3072)
-                                    ->disk('public')
-                                    ->directory('brands')
-                                    ->required(),
-                            ]),
-                    ]),
-                // Section::make('Form Section'),
-                Section::make('Form Section')
-                    ->schema([
-                        TextInput::make('formTitle')
-                            ->label('Title')
-                            ->required(),
-                        // ->default('Who We Are'),
-
-                        TextInput::make('sub')
-                            ->label('Subtitle')
-                            ->required(),
-                        // ->default('Who We Are'),
+                        
+                        Textarea::make('google_maps_embed')
+                            ->label('Google Maps Embed Code')
+                            ->helperText('Paste the iframe embed code from Google Maps here')
+                            ->rows(4)
+                            ->placeholder('<iframe src="https://www.google.com/maps/embed?pb=..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'),
                     ]),
             ]);
     }
