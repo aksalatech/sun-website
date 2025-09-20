@@ -7,7 +7,7 @@
         ->orderBy('order')
         ->get();
 
-    $page = Z3d0X\FilamentFabricator\Models\Page::where('blocks', 'like', '%"type":"contact-us-page"%')->first();
+    $page = Z3d0X\FilamentFabricator\Models\Page::where('slug', 'contact-us')->first();
     $blocks = $page ? ($page->blocks[0] ?? null) : null;
     $information = $blocks['data']['information'] ?? [];
 @endphp
