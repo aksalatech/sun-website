@@ -83,10 +83,9 @@ class ProductResource extends Resource
                                         })
                                         ->unique(ignoreRecord: true),
 
-                                    Textarea::make('short_description')
+                                    RichEditor::make('short_description')
                                         ->maxLength(500)
-                                        ->placeholder('Short product description')
-                                        ->rows(3),
+                                        ->placeholder('Short product description'),
 
                                     Select::make('category')
                                         ->label('Category')
@@ -97,53 +96,23 @@ class ProductResource extends Resource
                                             'mix' => 'Mix',
                                         ]),
 
-                                    TextInput::make('detail_name')
-                                        ->maxLength(255)
-                                        ->placeholder('Detail product name'),
-
-                                    RichEditor::make('detail_desc')
-                                        ->placeholder('Detailed product description'),
 
                                     Section::make('Product Details')
                                         ->schema([
-                                            Repeater::make('detail_size')
-                                                ->label('Size Information')
+                                            Repeater::make('product_details')
+                                                ->label('Product Details')
                                                 ->schema([
                                                     TextInput::make('label')
-                                                        ->placeholder('e.g., Weight, Dimensions')
+                                                        ->label('Label')
+                                                        ->placeholder('e.g., Weight, Dimensions, Material, Certificate')
                                                         ->required(),
-                                                    TextInput::make('value')
-                                                        ->placeholder('e.g., 100g, 10x5cm')
-                                                        ->required(),
-                                                ])
-                                                ->columns(2)
-                                                ->addActionLabel('Add Size Info'),
-
-                                            Repeater::make('detail_packing')
-                                                ->label('Packing Information')
-                                                ->schema([
-                                                    TextInput::make('label')
-                                                        ->placeholder('e.g., Material, Type')
-                                                        ->required(),
-                                                    TextInput::make('value')
-                                                        ->placeholder('e.g., Plastic, Bottle')
+                                                    RichEditor::make('description')
+                                                        ->label('Description')
+                                                        ->placeholder('Enter detailed description...')
                                                         ->required(),
                                                 ])
-                                                ->columns(2)
-                                                ->addActionLabel('Add Packing Info'),
-
-                                            Repeater::make('detail_certificate')
-                                                ->label('Certificate Information')
-                                                ->schema([
-                                                    TextInput::make('label')
-                                                        ->placeholder('e.g., Halal, BPOM, ISO')
-                                                        ->required(),
-                                                    TextInput::make('value')
-                                                        ->placeholder('e.g., Yes, No, Certificate Number')
-                                                        ->required(),
-                                                ])
-                                                ->columns(2)
-                                                ->addActionLabel('Add Certificate Info'),
+                                                ->columns(1)
+                                                ->addActionLabel('Add Product Detail'),
                                         ])
                                         ->collapsible(),
                                 ])

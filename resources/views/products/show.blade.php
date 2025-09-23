@@ -62,7 +62,7 @@
                             <!-- Short Description -->
                             @if($product->short_description)
                                 <div class="product-description mb-4">
-                                    <p>{{ $product->short_description }}</p>
+                                    <p>{!! $product->short_description !!}</p>
                                 </div>
                             @endif
 
@@ -84,68 +84,20 @@
                                  <h3>Specification</h3>
                              </div>
                              <div class="product-detail-table">
-                                 <table class="specification-table">
-                                     <tbody>
-                                         @if($product->detail_name)
-                                         <tr>
-                                             <td class="spec-label">Name</td>
-                                             <td class="spec-value">{{ $product->detail_name }}</td>
-                                         </tr>
-                                         @endif
-
-                                         @if($product->detail_desc)
-                                         <tr>
-                                             <td class="spec-label">Description</td>
-                                             <td class="spec-value">{!! $product->detail_desc !!}</td>
-                                         </tr>
-                                         @endif
-
-                                         @if($product->detail_size && is_array($product->detail_size) && count($product->detail_size) > 0)
-                                         <tr>
-                                             <td class="spec-label">Cut form and Size</td>
-                                             <td class="spec-value">
-                                                 @foreach($product->detail_size as $size)
-                                                     @if(is_array($size) && isset($size['label']) && isset($size['value']))
-                                                         <strong>{{ $size['label'] }}:</strong> {{ $size['value'] }}@if(!$loop->last)<br>@endif
-                                                     @else
-                                                         {{ is_string($size) ? $size : '' }}@if(!$loop->last)<br>@endif
-                                                     @endif
-                                                 @endforeach
-                                             </td>
-                                         </tr>
-                                         @endif
-
-                                         @if($product->detail_packing && is_array($product->detail_packing) && count($product->detail_packing) > 0)
-                                         <tr>
-                                             <td class="spec-label">Packing</td>
-                                             <td class="spec-value">
-                                                 @foreach($product->detail_packing as $packing)
-                                                     @if(is_array($packing) && isset($packing['label']) && isset($packing['value']))
-                                                         <strong>{{ $packing['label'] }}:</strong> {{ $packing['value'] }}@if(!$loop->last)<br>@endif
-                                                     @else
-                                                         {{ is_string($packing) ? $packing : '' }}@if(!$loop->last)<br>@endif
-                                                     @endif
-                                                 @endforeach
-                                             </td>
-                                         </tr>
-                                         @endif
-
-                                         @if($product->detail_certificate && is_array($product->detail_certificate) && count($product->detail_certificate) > 0)
-                                         <tr>
-                                             <td class="spec-label">Certificates</td>
-                                             <td class="spec-value">
-                                                 @foreach($product->detail_certificate as $certificate)
-                                                     @if(is_array($certificate) && isset($certificate['label']) && isset($certificate['value']))
-                                                         <strong>{{ $certificate['label'] }}:</strong> {{ $certificate['value'] }}@if(!$loop->last)<br>@endif
-                                                     @else
-                                                         {{ is_string($certificate) ? $certificate : '' }}@if(!$loop->last)<br>@endif
-                                                     @endif
-                                                 @endforeach
-                                             </td>
-                                         </tr>
-                                         @endif
-                                     </tbody>
-                                 </table>
+                                <table class="specification-table">
+                                    <tbody>
+                                        @if($product->product_details && is_array($product->product_details) && count($product->product_details) > 0)
+                                            @foreach($product->product_details as $detail)
+                                                @if(is_array($detail) && isset($detail['label']) && isset($detail['description']))
+                                                <tr>
+                                                    <td class="spec-label">{{ $detail['label'] }}</td>
+                                                    <td class="spec-value">{!! $detail['description'] !!}</td>
+                                                </tr>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </tbody>
+                                </table>
                              </div>
                          </div>
                      </div>

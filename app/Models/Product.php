@@ -21,6 +21,7 @@ class Product extends Model
         'slug',
         'short_description',
         'category',
+        'product_details',
         'detail_name',
         'detail_desc',
         'detail_size',
@@ -36,6 +37,7 @@ class Product extends Model
     protected $table = 'products';
 
     protected $casts = [
+        'product_details' => 'array',
         'detail_size' => 'array',
         'detail_packing' => 'array',
         'detail_certificate' => 'array',
