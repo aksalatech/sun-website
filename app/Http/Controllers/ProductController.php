@@ -21,7 +21,15 @@ class ProductController extends Controller
             ->whereNotNull('category')
             ->pluck('category');
 
-        return view('products.index', compact('products', 'categories'));
+        // Create a page object for SEO
+        $page = (object) [
+            'title' => 'Our Products',
+            'meta_title' => 'Our Products - Sun Frozen',
+            'meta_description' => 'Discover our high-quality frozen vegetables, frozen berries, and frozen fruits. Premium quality products from PT Suryatama Usaha Nusantara.',
+            'meta_keywords' => 'frozen products, frozen vegetables, frozen berries, frozen fruits, Sun Frozen products'
+        ];
+
+        return view('products.index', compact('products', 'categories', 'page'));
     }
 
     /**
@@ -65,7 +73,15 @@ class ProductController extends Controller
     {
         $product->load('images');
         
-        return view('products.show', compact('product'));
+        // Create a page object for SEO using product data
+        $page = (object) [
+            'title' => $product->name,
+            'meta_title' => $product->meta_title ?? $product->name . ' - Sun Frozen',
+            'meta_description' => $product->meta_description ?? $product->short_description ?? 'High-quality ' . $product->name . ' from Sun Frozen. Premium frozen products from PT Suryatama Usaha Nusantara.',
+            'meta_keywords' => $product->meta_keywords ?? $product->name . ', frozen products, Sun Frozen, ' . $product->category
+        ];
+        
+        return view('products.show', compact('product', 'page'));
     }
 
     /**

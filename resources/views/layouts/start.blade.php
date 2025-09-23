@@ -1,6 +1,12 @@
-@props(['page'])
+@props(['page' => null])
 @php 
     $metaImage = \App\Models\GlobalSetting::getContentBySlug('meta-image');
+    $page = $page ?? (object) [
+        'title' => 'Sun Frozen',
+        'meta_title' => 'Sun Frozen - Leading Frozen Foods Supplier',
+        'meta_description' => 'PT Suryatama Usaha Nusantara (Sunfrozen) - Leading supplier of frozen vegetables, frozen berries and frozen fruits.',
+        'meta_keywords' => 'Sun Frozen, frozen vegetables, frozen berries, frozen fruits, PT Suryatama Usaha Nusantara, frozen foods supplier'
+    ];
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
