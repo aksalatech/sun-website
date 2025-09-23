@@ -209,17 +209,30 @@ class ProductResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('category')
                     ->options([
-                        'skincare' => 'Skincare',
-                        'makeup' => 'Makeup',
-                        'health' => 'Health',
-                        'beauty' => 'Beauty',
-                        'supplements' => 'Supplements',
+                        'vegetables' => 'Vegetables',
+                        'fruits' => 'Fruits',
+                        'mix' => 'Mix',
                     ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ReplicateAction::make()->modalWidth('sm')->modalAlignment('left'),
+                Tables\Actions\ReplicateAction::make()
+                    ->modalWidth('sm')
+                    ->modalAlignment('left')
+                    ->excludeAttributes(['images_count'])
+                    ->beforeReplicaSaved(function (Product $replica, array $data): void {
+                        // Ensure the slug is unique
+                        $originalSlug = $replica->slug;
+                        $slug = $originalSlug;
+                        $i = 1;
+                        
+                        while (Product::where('slug', $slug)->exists()) {
+                            $slug = $originalSlug . '-' . $i++;
+                        }
+                        
+                        $replica->slug = $slug;
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
