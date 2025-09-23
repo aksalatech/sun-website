@@ -1,26 +1,41 @@
+@props(['page'])
+@php 
+    $metaImage = \App\Models\GlobalSetting::getContentBySlug('meta-image');
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="keywords" content="FYP Tour & Travel" />
-        <meta name="description" content="FYP Tour & Travel" />
+        <meta name="keywords" content="{{ $page->meta_keywords ?? 'Sun Frozen, frozen vegetables, frozen berries, frozen fruits, PT Suryatama Usaha Nusantara, frozen foods supplier' }}" />
+        <meta name="description" content="{{ $page->meta_description ?? 'PT Suryatama Usaha Nusantara (Sunfrozen) with the BRANDS UNLEASHIA, EMBRYOLISSE and HST has a strong online and offline sales base in Indonesia' }}" />
         <meta name="author" content="" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="shortcut icon" href="{{ asset('storage/logo/favicon.png') }}" />
-        <!-- Favicone Icon -->
+        <!-- Open Graph (Facebook, LinkedIn, etc) -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:title" content="{{ $page->meta_title ?? 'Sun Frozen - Leading Frozen Foods Supplier' }}">
+        <meta property="og:description" content="{{ $page->meta_description ?? 'PT Suryatama Usaha Nusantara (Sunfrozen) - Leading supplier of frozen vegetables, frozen berries and frozen fruits. Bringing the world best vegetables and fruit to your kitchen.' }}">
+        <meta property="og:image" content="{{ asset('storage/' . $metaImage ?? 'assets/front/images/default.png') }}">
 
-        <title>@yield('title') - {{ config('app.name', 'FYP Tour & Travel') }}</title>
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:url" content="{{ url()->current() }}">
+        <meta name="twitter:title" content="{{ $page->meta_title ?? 'Sun Frozen - Leading Frozen Foods Supplier' }}">
+        <meta name="twitter:description" content="{{ $page->meta_description ?? 'PT Suryatama Usaha Nusantara (Sunfrozen) - Leading supplier of frozen vegetables, frozen berries and frozen fruits. Bringing the world best vegetables and fruit to your kitchen.' }}">
+        <meta name="twitter:image" content="{{ asset('storage/' . $metaImage ?? 'assets/front/images/default.png') }}">
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ asset('assets/front/images/favicon.png') }}" />
+
+        <title>{{ $page->title }} - {{ config('app.name', 'Sun Frozen') }}</title>
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-        <!-- Template -->
         <link href="{{ asset('assets/front/css/fonts.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/front/plugins/bootstrap/bootstrap.css') }}" rel="stylesheet" />
-        <link href="{{ asset('assets/front/plugins/animate/animate.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/front/plugins/magnific-popup/magnific-popup.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/front/css/aos.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/front/plugins/slick/slick.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/front/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/front/css/typography.css') }}" rel="stylesheet" />
@@ -28,16 +43,19 @@
         <link href="{{ asset('assets/front/css/shortcode.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/front/css/widget.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/front/css/component.css') }}" rel="stylesheet" />
-        <link href="{{ asset('assets/front/css/color.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/front/css/style.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/front/css/color.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/front/css/responsive.css') }}" rel="stylesheet" />
         <link href="{{ asset('assets/front/css/svg-inline.css') }}" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        
-        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     </head>
-    <body class="modren-layout parallax-section" data-stellar-background-ratio="0.5" style="background-position: 0% -30px">
+    <body class="modren-layout parallax-section" id="@stack('classHeaderBackground')" data-stellar-background-ratio="0.5" style="background-position: 0% -30px">
         <!-- LOADER -->
+
+        @include('sweetalert::alert')
         <div id="loader-overflow" style="display: none">
             <div id="loader3" class="loader-cont" style="display: none">
             Please enable JS
@@ -49,15 +67,18 @@
 
             <!-- Content -->
             <main>
+                @if (isset($page->blocks))
+                    <x-filament-fabricator::page-blocks :blocks="$page->blocks" />
+                @endif
                 @yield('content')
             </main>
 
             @include('components.layouts.footer')
         </div>
-      
-            <!--jquery library js-->
+
+        <!--jquery library js-->
             <script src="{{ asset('assets/front/plugins/jquery/jquery.js') }}"></script>
-            
+            <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
             <!-- bootstrap -->
             <script src="{{ asset('assets/front/plugins/bootstrap/bootstrap.js') }}"></script>
             <!-- Slick Slider -->
@@ -67,6 +88,8 @@
             <!-- Dll Menu Js -->
             <script src="{{ asset('assets/front/plugins/modernizr/modernizr.custom.js') }}"></script>
             <script src="{{ asset('assets/front/plugins/jquery/jquery.dlmenu.js') }}"></script>
+            <script src="{{ asset('assets/front/js/jquery.waypoints.min.js') }}"></script>
+            <script src="{{ asset('assets/front/js/jquery.countup.min.js') }}"></script>
             <!-- Fontawesome Js -->
             <script src="{{ asset('assets/front/plugins/fontawesome/fontawesome.js') }}"></script>
             <!-- Date Picker -->
@@ -78,17 +101,27 @@
             <!-- Input Number Js -->
             <script src="{{ asset('assets/front/js/input-number.js') }}"></script>
             <!--Custom Script-->
+            <script src="{{ asset('assets/front/js/aos.js') }}"></script>
             <script src="{{ asset('assets/front/js/custom.js') }}"></script>
-        
+            <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    AOS.init();
+                })
+            </script>
             @yield('additional')
+
+            @stack('custom-scripts')
 
         <script>
             @if(Session::has('success'))
                 toastr.success("{{ Session::get('success') }}");
             @endif
 
-            
+            $('.have-children').on('click', function(e) {
+                e.preventDefault(); 
+                $(this).next('.children').slideToggle(); 
+            });
         </script>
-        
     </body>
 </html>
