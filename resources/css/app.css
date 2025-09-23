@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fix Filament Rich Editor margin issues */
+.prose :where(p):not(:where([class~=not-prose],[class~=not-prose] *)) {
+    margin-bottom: 0.5em !important;
+    margin-top: 0.5em !important;
+}
+
+/* Additional fixes for rich editor spacing */
+.prose p:first-child {
+    margin-top: 0 !important;
+}
+
+.prose p:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Reduce line height for better spacing */
+.prose p {
+    line-height: 1.4 !important;
+}
