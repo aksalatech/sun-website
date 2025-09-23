@@ -28,7 +28,13 @@ class ImagesRelationManager extends RelationManager
                     ->image()
                     ->required()
                     ->directory('products')
-                    ->visibility('public'),
+                    ->visibility('public')
+                    ->acceptedFileTypes(['image/*'])
+                    ->maxSize(10240) // 10MB
+                    ->imageResizeMode('cover')
+                    ->imageCropAspectRatio('16:9')
+                    ->imageResizeTargetWidth('1920')
+                    ->imageResizeTargetHeight('1080'),
 
                 TextInput::make('alt_text')
                     ->maxLength(255)
