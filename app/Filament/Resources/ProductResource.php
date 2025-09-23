@@ -127,13 +127,27 @@ class ProductResource extends Resource
                                 ->collapsible()
                                 ->schema([
                                     TextInput::make('meta_title')
-                                        ->maxLength(60)
-                                        ->helperText('Recommended length is 50-60 characters'),
+                                        ->maxLength(100)
+                                        ->helperText('Recommended length is 50-60 characters, max 100 characters')
+                                        ->live()
+                                        ->afterStateUpdated(function ($state, callable $set) {
+                                            $length = strlen($state ?? '');
+                                            if ($length > 100) {
+                                                $set('meta_title', substr($state, 0, 100));
+                                            }
+                                        }),
 
                                     Textarea::make('meta_description')
-                                        ->maxLength(160)
-                                        ->rows(3)
-                                        ->helperText('Recommended length is 150-160 characters'),
+                                        ->maxLength(300)
+                                        ->rows(4)
+                                        ->helperText('Recommended length is 150-160 characters, max 300 characters')
+                                        ->live()
+                                        ->afterStateUpdated(function ($state, callable $set) {
+                                            $length = strlen($state ?? '');
+                                            if ($length > 300) {
+                                                $set('meta_description', substr($state, 0, 300));
+                                            }
+                                        }),
 
                                     TextInput::make('meta_keywords')
                                         ->helperText('Separate keywords with commas'),
