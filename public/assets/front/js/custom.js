@@ -156,12 +156,14 @@ $(document).ready(function () {
   }
   if ($(".slider").length) {
     $(".slider").slick({
-      dots: !1,
+      dots: !0,
       fade: !0,
       speed: 900,
       arrows: !1,
       infinite: !0,
       draggable: !0,
+      autoplay: !0,
+      autoplaySpeed: 3000,
       touchThreshold: 100,
       // prevArrow: $('.custom-prev'),
       // nextArrow: $('.custom-next'),
