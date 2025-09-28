@@ -21,7 +21,7 @@
       </div>
 
       <!-- Baris 2: Informasi Kontak -->
-      <div class="row contact-info-row align-items-center">
+      <div class="row contact-info-row">
         <div class="col-lg-6 col-12 contact-col-right" data-aos="fade-left" data-aos-duration="1000">
           @php
             $mapsEmbed = $googleMapsEmbed ?? null;

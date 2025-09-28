@@ -31,10 +31,10 @@
 @endphp
 <section class="quality-section">
     <div class="container quality-container">
-        <div class="row">
+        <div class="quality-slider">
             @if($qualityItemsModel->count())
                 @foreach($qualityItemsModel as $item)
-                    <div class="quality-item col-md-3" data-aos="fade-up" data-aos-duration="700" data-aos-delay="{{ 50 + ($loop->index * 100) }}">
+                    <div class="quality-item" data-aos="fade-up" data-aos-duration="700" data-aos-delay="{{ 50 + ($loop->index * 100) }}">
                         <div class="quality-item-inner">
                             @if(!empty($item->icon))
                                 <img src="{{ asset('storage/'.$item->icon) }}" alt="icon" class="quality-icon">

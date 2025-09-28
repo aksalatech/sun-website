@@ -195,6 +195,23 @@ $(document).ready(function () {
       ],
     });
   }
+  if ($(".quality-slider").length) {
+    $(".quality-slider").slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: !0,
+      autoplaySpeed: 3000,
+      dots: !0,
+      arrows: !1,
+      infinite: !0,
+      responsive: [
+        { breakpoint: 1200, settings: { slidesToShow: 3 } },
+        { breakpoint: 992, settings: { slidesToShow: 2 } },
+        { breakpoint: 768, settings: { slidesToShow: 2 } },
+        { breakpoint: 481, settings: { slidesToShow: 1 } },
+      ],
+    });
+  }
   if ($(".map-canvas").length) {
     initMap();
   }
