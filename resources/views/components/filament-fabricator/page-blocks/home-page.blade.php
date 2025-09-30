@@ -129,4 +129,27 @@
         </div>
     </div>
 </section>
+@else
+<!-- Coming Soon Video Section -->
+<section class="coming-soon-video-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="coming-soon-container" data-aos="fade-up" data-aos-duration="800">
+                    <div class="coming-soon-content">
+                        <div class="coming-soon-icon">
+                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 5v14l11-7z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="coming-soon-title">Video Coming Soon</h3>
+                        <p class="coming-soon-description">
+                            We're working on something amazing! Stay tuned for our upcoming video content that will showcase our story and commitment to quality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endif
