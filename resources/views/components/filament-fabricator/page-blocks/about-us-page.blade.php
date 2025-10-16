@@ -77,28 +77,52 @@
         </div>
     </div>
 </section>
-@if(isset($enableVideo) && $enableVideo)
+
+@if(isset($aboutEnableVideo) && $aboutEnableVideo)
 <section class="about-us-video-section">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="about-us-video-container" data-aos="fade-up" data-aos-duration="800">
-                    @if(isset($videoType) && $videoType === 'upload' && isset($videoFile) && !empty($videoFile))
+                    @if(isset($aboutVideoType) && $aboutVideoType === 'upload' && isset($aboutVideoFile) && !empty($aboutVideoFile))
                         <video controls class="about-us-video-player">
-                            <source src="{{ asset('storage/' . $videoFile) }}" type="video/mp4">
+                            <source src="{{ asset('storage/' . $aboutVideoFile) }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-                    @elseif(isset($videoType) && $videoType === 'youtube' && isset($youtubeUrl) && $youtubeUrl)
+                    @elseif(isset($aboutVideoType) && $aboutVideoType === 'youtube' && isset($aboutYoutubeUrl) && $aboutYoutubeUrl)
                         <div class="about-us-video-embed">
                             <iframe
                                 width="100%"
                                 height="600"
-                                src="{{ $youtubeUrl }}"
+                                src="{{ $aboutYoutubeUrl }}"
                                 frameborder="0"
                                 allowfullscreen>
                             </iframe>
                         </div>
                     @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@else
+<!-- Coming Soon Video Section -->
+<section class="coming-soon-video-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="coming-soon-container" data-aos="fade-up" data-aos-duration="800">
+                    <div class="coming-soon-content">
+                        <div class="coming-soon-icon">
+                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 5v14l11-7z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="coming-soon-title">Video Coming Soon</h3>
+                        <p class="coming-soon-description">
+                            We're working on something amazing! Stay tuned for our upcoming video content that will showcase our story and commitment to quality.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
