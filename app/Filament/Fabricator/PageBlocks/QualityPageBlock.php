@@ -25,11 +25,10 @@ class QualityPageBlock extends PageBlock
                             ->directory('quality')
                             ->maxSize(51200)
                             ->required(),
-                        TextInput::make('heroSmallTitle')->default('QUALITY')->required(),
+                        TextInput::make('heroSmallTitle')->default('QUALITY'),
                         RichEditor::make('heroTitle')
                             ->label('Hero Text')
-                            ->default('We achieve success from our commitment to quality and our hard work that won customer\'s trust.')
-                            ->required(),
+                            ->default('We achieve success from our commitment to quality and our hard work that won customer\'s trust.'),
                     ]),
 
                 Section::make('Product Guarantee')
